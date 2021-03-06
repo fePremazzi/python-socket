@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  server:
+    image: fepremazzi/simple-tcp-server
+    ports:
+      - 12500:12500
+    networks: 
+      - redes-network
+  
+  client:
+    image: fepremazzi/simple-tcp-client
+    depends_on: 
+      - server
+    networks: 
+      - redes-network
+
+networks: 
+  redes-network:
+    driver: bridge
+
